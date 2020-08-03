@@ -16,7 +16,7 @@ import static com.example.quizapplication.R.color.red;
 public class HomeActivity3 extends AppCompatActivity {
     int score=0;
     Button button,button2,button3,next;
-    TextView tv;
+    TextView tv,tv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,10 @@ public class HomeActivity3 extends AppCompatActivity {
         button3=findViewById(R.id.button3);
         next=findViewById(R.id.next);
         tv=findViewById(R.id.textView4);
+        tv2=findViewById(R.id.textView2);
+        Intent intent=getIntent();
+        score=intent.getIntExtra("score",0);
+        tv2.setText("Score "+ score);
         button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -41,7 +45,6 @@ public class HomeActivity3 extends AppCompatActivity {
             public void onClick(View view) {
                 button2.setBackgroundColor(Color.parseColor("#E84342"));
                 tv.setText("In hurricane-heavy areas, permanent storm shutters are the best protection for your windows. Plus, it beats having to nail plywood to your house (although that will work in a pinch). Tape simply ensures that the glass breaks into guillotine-sized pieces that can cause horrific bodily harm.");
-                score+=1;
 
 
             }
@@ -52,14 +55,18 @@ public class HomeActivity3 extends AppCompatActivity {
             public void onClick(View view) {
                 button3.setBackgroundColor(Color.parseColor("#45CE30"));
                 tv.setText("In hurricane-heavy areas, permanent storm shutters are the best protection for your windows. Plus, it beats having to nail plywood to your house (although that will work in a pinch). Tape simply ensures that the glass breaks into guillotine-sized pieces that can cause horrific bodily harm.");
+                score+=1;
+                tv2.setText("Score: "+score);
 
 
             }
         });
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(HomeActivity3.this,HomeActivity4.class);
+                intent.putExtra("score",score);
                 startActivity(intent);
             }
         });

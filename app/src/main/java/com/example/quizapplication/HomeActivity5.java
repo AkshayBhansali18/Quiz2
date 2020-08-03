@@ -16,7 +16,7 @@ import static com.example.quizapplication.R.color.red;
 public class HomeActivity5 extends AppCompatActivity {
     int score=0;
     Button button,button2,button3,next;
-    TextView tv;
+    TextView tv,tv2;
 
 
     @Override
@@ -26,15 +26,21 @@ public class HomeActivity5 extends AppCompatActivity {
         button= findViewById(R.id.button);
         button2=findViewById(R.id.button2);
         button3=findViewById(R.id.button3);
-//        next=findViewById(R.id.next);
+        next=findViewById(R.id.next);
         tv=findViewById(R.id.textView4);
+        tv2=findViewById(R.id.textView2);
+        score=getIntent().getIntExtra("score",0);
+        tv2.setText("Score: "+ String.valueOf(score));
         button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
                 button.setBackgroundColor(Color.parseColor("#45CE30"));
-
                 tv.setText("you should have enough food to last three days. Of course, it couldn't hurt to have extra beyond this.");
+                score+=1;
+                tv2.setText("Score: "+score);
+
+
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -43,7 +49,6 @@ public class HomeActivity5 extends AppCompatActivity {
             public void onClick(View view) {
                 button2.setBackgroundColor(Color.parseColor("#E84342"));
                 tv.setText("you should have enough food to last three days. Of course, it couldn't hurt to have extra beyond this.");
-                score+=1;
 
 
             }
@@ -58,13 +63,16 @@ public class HomeActivity5 extends AppCompatActivity {
 
             }
         });
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent intent=new Intent(HomeActivity5.this,HomeActivity6.class);
-////                startActivity(intent);
-//            }
-//        });
+        tv2.setText("Score: "+score);
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(HomeActivity5.this,HomeActivity6.class);
+                intent.putExtra("score",score);
+                startActivity(intent);
+            }
+        });
 
 
     }

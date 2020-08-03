@@ -16,7 +16,7 @@ import static com.example.quizapplication.R.color.red;
 public class HomeActivity extends AppCompatActivity {
     int score=0;
     Button button,button2,button3,next;
-    TextView tv;
+    TextView tv,tv2;
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +27,16 @@ public class HomeActivity extends AppCompatActivity {
         button3=findViewById(R.id.button3);
         next=findViewById(R.id.next);
         tv=findViewById(R.id.textView4);
+        tv2=findViewById(R.id.textView2);
+        tv2.setText("Score: 0");
         button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View view) {
                 button.setBackgroundColor(Color.parseColor("#45CE30"));
+                score+=1;
                 tv.setText("Contrary to popular belief, doorways really aren’t much safer than other areas of a modern building. If you’re stuck inside when a tremor begins, hide under a very sturdy table or similar object to protect yourself from falling debris.");
+                tv2.setText("Score: "+String.valueOf(score));
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +44,6 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View view) {
                 button2.setBackgroundColor(Color.parseColor("#E84342"));
                 tv.setText("Contrary to popular belief, doorways really aren’t much safer than other areas of a modern building. If you’re stuck inside when a tremor begins, hide under a very sturdy table or similar object to protect yourself from falling debris.");
-                score+=1;
 
 
             }
@@ -54,10 +57,13 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+        tv2.setText("Score: "+score);
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(HomeActivity.this,HomeActivity2.class);
+                intent.putExtra("score",score);
                 startActivity(intent);
             }
         });

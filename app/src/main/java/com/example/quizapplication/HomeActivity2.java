@@ -16,7 +16,7 @@ import static com.example.quizapplication.R.color.red;
 public class HomeActivity2 extends AppCompatActivity {
     int score=0;
     Button button,button2,button3,next;
-    TextView tv;
+    TextView tv,tv2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,9 @@ public class HomeActivity2 extends AppCompatActivity {
         button3=findViewById(R.id.button3);
         next=findViewById(R.id.next);
         tv=findViewById(R.id.textView4);
+        tv2=findViewById(R.id.textView2);
+        Intent intent=getIntent();
+        score=intent.getIntExtra("score",0);
         button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -42,6 +45,7 @@ public class HomeActivity2 extends AppCompatActivity {
                 button2.setBackgroundColor(Color.parseColor("#45CE30"));
                 tv.setText("For decades, many people believed that opening windows reduced pressure inside homes during tornadoes. But the theory doesn’t hold water, and actually, opening windows can let in high winds that may add more damage to the structure.");
                 score+=1;
+                tv2.setText("Score: "+score);
 
 
             }
@@ -56,10 +60,12 @@ public class HomeActivity2 extends AppCompatActivity {
 
             }
         });
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(HomeActivity2.this,HomeActivity3.class);
+                intent.putExtra("score",score);
                 startActivity(intent);
             }
         });
