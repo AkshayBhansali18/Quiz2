@@ -12,15 +12,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         int splash_timeout=3000;
-
-       new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-    },splash_timeout);
-}
+//         int splash_timeout=3000;
+//
+//       new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//    },splash_timeout);
+        Intent intent=new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
 }
